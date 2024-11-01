@@ -10,6 +10,7 @@ const checkConnection = async () => {
     let connection;
     try {
         connection = await OracleDB.getConnection(config);
+        connection.execute(`ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY HH24:MI:SS'`)
         console.log(`Connected to db`);
     } catch (err) {
         console.error(err.message);
